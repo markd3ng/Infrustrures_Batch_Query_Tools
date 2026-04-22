@@ -6,6 +6,8 @@ Phase 1 + Phase 2 已完成：
 - 后端单 SN 查询接口 `/api/query-sn`（KV 缓存优先 + D1 日志）
 - 前端并发池批量查询、进度条、结果排序、CSV/Excel 导出
 - Cloudflare KV / D1 幂等初始化脚本
+- Cloudflare WAF `/api/*` Rate Limiting 幂等配置脚本
+- 前端全局 Error Boundary（异常降级与重试）
 - GitHub Actions 自动部署流程
 
 ## 本地开发
@@ -39,6 +41,20 @@ $env:HTTPS_PROXY="http://127.0.0.1:7890"
 在仓库 Settings → Secrets and variables → Actions 中配置：
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
+
+## 配置 `/api/*` WAF Rate Limiting（幂等）
+
+先准备 Cloudflare Zone ID（站点级别）：
+- `CLOUDFLARE_ZONE_ID`
+
+然后执行：
+
+```bash
+npm run cf:waf
+```
+
+脚本会调用 Cloudflare API，在 `http_ratelimit` 阶段为 `/api/*` 创建或更新规则（重复执行不会重复创建）。
+
 
 ## 一键部署（CI）
 

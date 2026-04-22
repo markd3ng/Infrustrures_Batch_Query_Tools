@@ -12,6 +12,7 @@
     "astro": "astro",
     "generate-types": "wrangler types",
     "cf:setup": "node scripts/setup-cf.mjs",
+    "cf:waf": "node scripts/configure-waf-rate-limit.mjs",
     "deploy:pages": "wrangler pages deploy ./dist --project-name h3c-batch-query-tool"
   },
   "dependencies": {
