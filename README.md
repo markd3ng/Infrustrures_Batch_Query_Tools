@@ -59,10 +59,14 @@ npm run cf:waf
 ## 一键部署（CI）
 
 当代码 push 到 `main` 时，`.github/workflows/deploy.yml` 会自动执行：
-1. `npm ci`
-2. `npm run cf:setup`
-3. `npm run build`
-4. `wrangler pages deploy ./dist --project-name h3c-batch-query-tool`
+1. 校验必需 Secrets（`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`）
+2. `npm ci`
+3. `npm run cf:setup`
+4. （可选）若存在 `CLOUDFLARE_ZONE_ID`，自动执行 `npm run cf:waf`
+5. `npm run build`
+6. 上传 `dist` 构建产物到 Actions Artifact（保留 7 天）
+7. `npm run deploy:pages`
+
 
 ---
 
