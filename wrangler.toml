@@ -1,0 +1,19 @@
+name = "h3c-batch-query-tool"
+main = "@astrojs/cloudflare/entrypoints/server"
+compatibility_date = "2026-04-21"
+compatibility_flags = ["global_fetch_strictly_public"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+[[kv_namespaces]]
+binding = "H3C_BOM_CACHE"
+id = "00000000000000000000000000000000"
+preview_id = "00000000000000000000000000000000"
+
+[[d1_databases]]
+binding = "QUERY_LOGS_DB"
+database_name = "query_logs"
+database_id = "00000000-0000-0000-0000-000000000000"
+

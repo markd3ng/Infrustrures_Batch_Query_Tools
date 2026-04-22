@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -20%, rgb(14 116 144 / 0.3), transparent 70%),
+    radial-gradient(900px 500px at 95% 0%, rgb(59 130 246 / 0.2), transparent 65%),
+    rgb(2 6 23);
+}
+
+* {
+  box-sizing: border-box;
+}
